@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title><?= htmlspecialchars($px->site()->get_current_page_info('title_full')); ?></title>
+<meta name="description" content="<?= htmlspecialchars($px->site()->get_current_page_info('description')); ?>" />
+<meta name="keywords" content="<?= htmlspecialchars($px->site()->get_current_page_info('keywords')); ?>" />
+<?php
+	// ↓コンテンツの環境構築を読み込みます。
+	print $px->get_contents_manifesto();
+?>
+<?php
+	//↓コンテンツから受け取った
+	//  headセクション内用のソースを出力しています。
+	print $px->bowl()->get_clean('head');
+?>
+</head>
+<body>
+<h1><?= preg_replace('/\r\n|\r|\n/s', '<br />', htmlspecialchars($px->site()->get_current_page_info('title_h1')) ); ?></h1>
+<div class="contents">
+<?php
+	//↓コンテンツから受け取った
+	//  コンテンツエリアのソースを出力しています。
+	print $px->bowl()->get_clean();
+?>
+</div>
+<?php
+	//↓コンテンツから受け取った
+	//  bodyセクションの最後に出力するソースを出力しています。
+	print $px->bowl()->get_clean('foot');
+?>
+</body>
+</html>
