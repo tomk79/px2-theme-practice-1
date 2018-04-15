@@ -1,5 +1,48 @@
+$keycolor: #f60;
+
+html, body{
+    font-size: 18px;
+    @media all and (max-width:768px){
+        font-size: 16px;
+    }
+    @media all and (max-width:440px){
+        font-size: 14px;
+    }
+}
+.theme-root{
+    border-top: 5px solid $keycolor;
+}
+.theme-header{
+    &__title{
+        font-size: 1rem;
+        margin: 1.5em 0 0.5em;
+        padding: 0;
+        a, span{
+            display: inline-block;
+            margin: 0;
+            padding: 0.5em;
+            border:3px solid $keycolor;
+            color: $keycolor;
+            font-size: 1rem;
+            font-weight: normal;
+            line-height: 1;
+        }
+        span{
+            font-size: 1.8rem;
+        }
+    }
+}
+.theme-footer{
+    text-align: center;
+
+    &__copyright{
+    }
+}
+
+
+// コンテンツ
 .contents{
-    /* ライブラリ同士の衝突吸収 */
+    // ライブラリ同士の衝突吸収
     p, ul, ol, dl{
         margin: 1em 0;
     }

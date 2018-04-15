@@ -24,18 +24,32 @@
 ?>
 </head>
 <body>
-<h1><?= preg_replace('/\r\n|\r|\n/s', '<br />', htmlspecialchars($px->site()->get_current_page_info('title_h1')) ); ?></h1>
-<div class="contents">
-<?php
-	//↓コンテンツから受け取った
-	//  コンテンツエリアのソースを出力しています。
-	print $px->bowl()->get_clean();
-?>
+<div class="theme-root">
+<header class="theme-header">
+	<div class="container">
+		<?php if( strlen($px->site()->get_current_page_info('id')) ){ ?><p class="theme-header__title"><a href="<?= htmlspecialchars($px->href('')) ?>"><?= htmlspecialchars($px->conf()->name) ?></a></p><?php }else{ ?><h1 class="theme-header__title"><span><?= htmlspecialchars($px->conf()->name) ?></span></h1><?php } ?>
+	</div>
+</header>
+<div class="container">
+	<?php if( strlen($px->site()->get_current_page_info('id')) ){ ?><h1><?= preg_replace('/\r\n|\r|\n/s', '<br />', htmlspecialchars($px->site()->get_current_page_info('title_h1')) ); ?></h1><?php } ?>
+	<div class="contents" <?= htmlspecialchars( $theme->get_attr_bowl_name_by() )?>="main">
+	<?php
+		//↓コンテンツから受け取った
+		//  コンテンツエリアのソースを出力しています。
+		print $px->bowl()->get_clean();
+	?>
+	</div>
 </div>
+<footer class="theme-footer">
+	<div class="container">
+		<p class="theme-footer__copyright">&copy; <?= htmlspecialchars($px->conf()->copyright) ?></p>
+	</div>
+</footer>
 <?php
 	//↓コンテンツから受け取った
 	//  bodyセクションの最後に出力するソースを出力しています。
 	print $px->bowl()->get_clean('foot');
 ?>
+</div>
 </body>
 </html>
