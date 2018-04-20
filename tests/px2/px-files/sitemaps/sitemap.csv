@@ -1,4 +1,6 @@
-* id,* path,* title,* description,* keywords
-,/index.html,Home
-,/sample1/index.html,Sample 001
-,/sample2/index.html,Sample 002
+* id,* path,* title,* description,* keywords,* list_flg,* category_top_flg
+,/index.html,Home,"Home Page","home,sample,pickles2",1,,
+,/sample1/index.html,Sample 001,,,1,1,
+,/sample2/index.html,Sample 002,,,1,1,
+,/help/index.html,HELP 1,,,1,,
+,/help/2.html,HELP 2,,,1,,

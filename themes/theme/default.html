@@ -24,10 +24,27 @@
 ?>
 </head>
 <body>
+<a id="pagetop"></a>
 <div class="theme-root">
 <header class="theme-header">
 	<div class="container">
 		<?php if( strlen($px->site()->get_current_page_info('id')) ){ ?><p class="theme-header__title"><a href="<?= htmlspecialchars($px->href('')) ?>"><?= htmlspecialchars($px->conf()->name) ?></a></p><?php }else{ ?><h1 class="theme-header__title"><span><?= htmlspecialchars($px->conf()->name) ?></span></h1><?php } ?>
+<?php
+	$gnavi = $px->site()->get_global_menu();
+?>
+<?php if( count($gnavi) ){ ?>
+		<ul class="theme-global-menu">
+			<?php foreach($gnavi as $pid){ ?><li><?= $px->mk_link($pid) ?></li><?php } ?>
+		</ul>
+<?php } ?>
+<?php
+	$snavi = $px->site()->get_shoulder_menu();
+?>
+<?php if( count($snavi) ){ ?>
+		<ul class="theme-shoulder-menu">
+			<?php foreach($snavi as $pid){ ?><li><?= $px->mk_link($pid) ?></li><?php } ?>
+		</ul>
+<?php } ?>
 	</div>
 </header>
 <div class="container">
@@ -39,9 +56,23 @@
 		print $px->bowl()->get_clean();
 	?>
 	</div>
+	<div class="theme-pagetop">
+		<a href="#pagetop">page top</a>
+	</div>
 </div>
 <footer class="theme-footer">
 	<div class="container">
+<?php
+	$gnavi = $px->site()->get_global_menu();
+	$snavi = $px->site()->get_shoulder_menu();
+	$all_menu = array_merge($gnavi, $snavi);
+?>
+<?php if( count($all_menu) ){ ?>
+			<ul class="theme-footer-menu">
+				<?php foreach($all_menu as $pid){ ?><li><?= $px->mk_link($pid) ?></li><?php } ?>
+			</ul>
+<?php } ?>
+
 		<p class="theme-footer__copyright">&copy; <?= htmlspecialchars($px->conf()->copyright) ?></p>
 	</div>
 </footer>
