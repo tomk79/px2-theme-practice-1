@@ -16,6 +16,9 @@ a{
         color: $hovercolor;
     }
 }
+h1{
+    font-size: 3rem;
+}
 .current{
     font-weight: bold;
 }
@@ -97,6 +100,25 @@ a{
         a{
             display: block;
             padding: 0.2em 1em;
+        }
+    }
+}
+.theme-breadcrumb{
+    display: block;
+    margin: 0.5em 0;
+    ul, li{
+        margin: 0;
+        padding: 0;
+        display: inline;
+        list-style-type: none;
+    }
+    ul{
+        li:after{
+            content: ">";
+            margin: 0 1em;
+        }
+        li:last-child:after{
+            content: none;
         }
     }
 }

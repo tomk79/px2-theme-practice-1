@@ -1,0 +1,66 @@
+{
+ "bowl": {
+  "main": {
+   "modId": "_sys/root",
+   "fields": {
+    "main": [
+     {
+      "modId": "PlainHTMLElements:PlainHTML/MultiText",
+      "fields": {
+       "main": {
+        "src": "このページは、ショルダーナビメニューのサンプルとして制作されました。\n",
+        "editor": "markdown"
+       }
+      },
+      "anchor": "",
+      "dec": ""
+     },
+     {
+      "modId": "FESS:units/cols3",
+      "fields": {
+       "column1": [
+        {
+         "modId": "PlainHTMLElements:PlainHTML/MultiText",
+         "fields": {
+          "main": {
+           "src": "## CSS環境の独立性\n\nテーマとコンテンツのCSS環境はそれぞれ独立して成立している必要があります。\n",
+           "editor": "markdown"
+          }
+         },
+         "anchor": "",
+         "dec": ""
+        }
+       ],
+       "column2": [
+        {
+         "modId": "PlainHTMLElements:PlainHTML/MultiText",
+         "fields": {
+          "main": {
+           "src": "## モジュールとテーマが互いに依存しあわない\n\nプロジェクトは、たくさんあるテーマやモジュールの組み合わせを任意に選択して構築します。\n",
+           "editor": "markdown"
+          }
+         },
+         "anchor": "",
+         "dec": ""
+        }
+       ],
+       "column3": [
+        {
+         "modId": "PlainHTMLElements:PlainHTML/MultiText",
+         "fields": {
+          "main": {
+           "src": "## どんな組み合わせでも成立するように\n\nプロジェクトがどんな組み合わせでモジュールを選択しても壊れないように配慮する必要があります。\n\nしかし、その中でも、テーマはコンテンツのスタイルに影響しなければいけません。\n",
+           "editor": "markdown"
+          }
+         },
+         "anchor": "",
+         "dec": ""
+        }
+       ]
+      }
+     }
+    ]
+   }
+  }
+ }
+}
