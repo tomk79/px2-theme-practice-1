@@ -13,7 +13,7 @@ return call_user_func( function(){
 	// project
 
 	/** サイト名 */
-	$conf->name = 'Pickles 2 Practice 1';
+	$conf->name = 'SHRED CARROT';
 	/** コピーライト表記 */
 	$conf->copyright = 'Tomoya Koyanagi';
 	/** ドメイン(本番環境のドメイン) */
@@ -27,7 +27,7 @@ return call_user_func( function(){
 	/** トップページのパス(デフォルト "/") */
 	$conf->path_top = '/';
 	/** パブリッシュ先ディレクトリパス */
-	$conf->path_publish_dir = './px-files/dist/';
+	$conf->path_publish_dir = null;
 	/** 公開キャッシュディレクトリ */
 	$conf->public_cache_dir = '/common/px_resources/';
 	/** リソースディレクトリ(各コンテンツに対して1:1で関連付けられる)のパス */

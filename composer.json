@@ -1,6 +1,6 @@
 {
-    "name": "tomk79/px2-theme-practice-1",
-    "description": "Pickles 2 テーマの練習1",
+    "name": "tomk79/px2-theme-shred-carrot",
+    "description": "Theme \"SHRED CARROT\" for Pickles 2",
     "keywords": ["pickles2"],
     "license": "MIT",
     "authors": [
@@ -31,7 +31,7 @@
     },
     "extra": {
         "px2package": {
-            "name": "Pickles 2 Practice 1",
+            "name": "SHRED CARROT",
             "type": "theme",
             "path": "theme/"
         }

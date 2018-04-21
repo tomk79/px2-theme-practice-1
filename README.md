@@ -1,2 +1,13 @@
-# px2-theme-practice-1
-Pickles 2 テーマの練習1
+# SHRED CARROT
+Theme for Pickles 2.
+
+## ライセンス - License
+
+MIT License
+
+
+## 作者 - Author
+
+- Tomoya Koyanagi <tomk79@gmail.com>
+- website: <http://www.pxt.jp/>
+- Twitter: @tomk79 <http://twitter.com/tomk79/>
