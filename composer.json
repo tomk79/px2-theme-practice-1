@@ -33,7 +33,7 @@
         "px2package": {
             "name": "SHRED CARROT",
             "type": "theme",
-            "path": "theme/"
+            "path": "themes/theme/"
         }
     }
 }
