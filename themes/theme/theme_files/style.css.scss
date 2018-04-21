@@ -122,6 +122,13 @@ h1{
         }
     }
 }
+.theme-local-menu{
+    margin: 3em auto 2em;
+    width: 90%;
+    border: 1px solid $keycolor;
+    padding: 1em 1.5em;
+    border-radius: 0.5em;
+}
 .theme-pagetop{
     display: flex;
     justify-content: flex-end;

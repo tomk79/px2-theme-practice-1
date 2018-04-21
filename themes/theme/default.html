@@ -57,6 +57,16 @@
 	print $px->bowl()->get_clean();
 ?>
 	</div>
+
+<?php
+$category_top_id = $px->site()->get_category_top();
+if( strlen($category_top_id) && count($px->site()->get_children($category_top_id)) ){ ?>
+<div class="theme-local-menu">
+	<p><a href="<?= htmlspecialchars( $px->href($category_top_id) ) ?>"><?= htmlspecialchars($px->site()->get_page_info($category_top_id, 'title_label')) ?></a></p>
+<?= $theme->mk_sub_menu( $category_top_id ) ?>
+</div>
+<?php } ?>
+
 	<div class="theme-pagetop">
 		<a href="#pagetop">page top</a>
 	</div>

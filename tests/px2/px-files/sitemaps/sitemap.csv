@@ -1,6 +1,9 @@
-* id,* path,* title,* description,* keywords,* list_flg,* category_top_flg
-,/index.html,Home,"Home Page","home,sample,pickles2",1,,
-,/sample1/index.html,Sample 001,,,1,1,
-,/sample2/index.html,Sample 002,,,1,1,
-,/help/index.html,HELP 1,,,1,,
-,/help/2.html,HELP 2,,,1,,
+* id,* path,* title,* logical_path,* description,* keywords,* list_flg,* category_top_flg
+,/index.html,Home,,"Home Page","home,sample,pickles2",1,,
+,/sample1/index.html,Sample 001,,,,1,1,
+,/sample1/1.html,Sample 001-01,/sample1/index.html,,,1,,
+,/sample1/2.html,Sample 001-02,/sample1/index.html,,,1,,
+,/sample1/2-1.html,Sample 001-02-01,/sample1/index.html>/sample1/2.html,,,1,,
+,/sample2/index.html,Sample 002,,,,1,1,
+,/help/index.html,HELP 1,,,,1,,
+,/help/2.html,HELP 2,,,,1,,
