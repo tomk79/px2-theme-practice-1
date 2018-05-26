@@ -1,5 +1,24 @@
-$keycolor: #f60;
-$hovercolor: #38f;
+<?php
+$json = include(__DIR__.'/style_conf.php');
+?>
+$keycolor: <?= $json->colors->key ?>;
+$subcolor: <?= $json->colors->sub ?>;
+$subcolor2: <?= $json->colors->sub2 ?>;
+$subcolor3: <?= $json->colors->sub3 ?>;
+
+@mixin frame-border {
+    padding: 1em 1.5em;
+    margin: 1em 12px;
+<?php
+    switch($json->shape){
+        case "circle":
+            echo "border-radius: 8px;";
+            break;
+        case "simple":
+            break;
+    }
+?>
+}
 
 html, body{
     font-size: 18px;
@@ -9,23 +28,90 @@ html, body{
     @media all and (max-width:440px){
         font-size: 14px;
     }
+    font-family: <?php
+    $fonts = array();
+    foreach($json->fonts as $font){
+        array_push($fonts, json_encode($font, JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES));
+    }
+    echo implode(", ", $fonts);
+?>, Meiryo, "Hiragino Kaku Gothic ProN", Verdana, "Helvetica Neue", Helvetica, Arial, sans-serif;
+<?php
+    if( $json->keycolor_rate >= 8 ){
+        echo 'background-color: $keycolor;';
+    }
+?>
 }
 a{
     color: $keycolor;
+<?php
+    if( $json->keycolor_rate >= 8 ){
+        echo 'color: #fff;';
+    }
+?>
     &:hover{
-        color: $hovercolor;
+        color: $subcolor;
     }
 }
 h1{
     font-size: 3rem;
 }
+h2{
+    @include frame-border;
+    color: $keycolor;
+    border: 2px solid $keycolor;
+    padding: 0.5em 0.5em 0.2em;
+    margin: 1em 0;
+    text-align: left;
+<?php
+    if( $json->keycolor_rate >= 8 ){
+        echo 'border-color: #fff;';
+        echo 'color: #fff;';
+    }else if( $json->keycolor_rate <= 0 ){
+        echo 'border: none;';
+        echo 'color: #333;';
+        echo 'padding: 0;';
+    }
+?>
+}
+h3{
+    border-bottom: 1px solid $keycolor;
+    padding: 0.5em 0 0.2em;
+    margin: 1em 0;
+    font-weight: bold;
+<?php
+    if( $json->keycolor_rate >= 8 ){
+        echo 'border-color: #fff;';
+    }else if( $json->keycolor_rate <= 0 ){
+        echo 'border: none;';
+        echo 'padding: 0;';
+    }
+?>
+}
 .current{
     font-weight: bold;
 }
 .theme-root{
-    border-top: 5px solid $keycolor;
+<?php
+    if( $json->keycolor_rate >= 8 ){
+        echo 'border-top: 5px solid $keycolor;';
+        echo 'background-color: $keycolor;';
+        echo 'color: #fff;';
+    }else if( $json->keycolor_rate >= 5 ){
+        echo 'border-top: 5px solid $keycolor;';
+    }else if( $json->keycolor_rate >= 2 ){
+        echo 'border-top: 5px solid $keycolor;';
+    }else{
+    }
+?>
 }
 .theme-header{
+    border-bottom: 1px solid #fff;
+<?php
+    if( $json->keycolor_rate >= 5 ){
+        echo 'background-color: $keycolor;';
+    }
+?>
+
     .container{
         display: flex;
         flex-direction: column;
@@ -37,6 +123,7 @@ h1{
         margin: 1em auto 1em;
         padding: 0;
         a, span{
+            @include frame-border;
             display: inline-block;
             margin: 0;
             padding: 0.5em;
@@ -45,11 +132,17 @@ h1{
             font-size: 1rem;
             font-weight: normal;
             line-height: 1;
+<?php
+    if( $json->keycolor_rate >= 5 ){
+        echo 'color: #fff;';
+        echo 'border-color: #fff;';
+    }
+?>
         }
         a{
             &:hover{
-                border:3px solid $hovercolor;
-                color: $hovercolor;
+                border:3px solid $subcolor;
+                color: $subcolor;
             }
         }
         span{
@@ -75,13 +168,30 @@ h1{
         a{
             display: block;
             padding: 0.2em 2em;
+<?php
+    if( $json->keycolor_rate >= 5 ){
+        echo 'color: #fff;';
+        echo 'border-color: #fff;';
+    }
+?>
         }
         a.current{
             color: #fff;
             background-color: $keycolor;
             font-weight: normal;
+<?php
+    if( $json->keycolor_rate >= 5 ){
+        echo 'color: $keycolor;';
+        echo 'background-color: #fff;';
+    }
+?>
             &:hover{
-                background-color: $hovercolor;
+<?php
+    if( $json->keycolor_rate >= 5 ){
+        echo 'color: #fff;';
+    }
+?>
+                background-color: $subcolor;
             }
         }
     }
@@ -100,12 +210,26 @@ h1{
         a{
             display: block;
             padding: 0.2em 1em;
+<?php
+    if( $json->keycolor_rate >= 5 ){
+        echo 'color: #fff;';
+        echo 'border-color: #fff;';
+    }
+?>
         }
+    }
+}
+.theme-welcome{
+    width: auto;
+    margin: 0.5em 0;
+    img{
+        width: 100%;
     }
 }
 .theme-breadcrumb{
     display: block;
     margin: 0.5em 0;
+    font-size: small;
     ul, li{
         margin: 0;
         padding: 0;
@@ -122,12 +246,31 @@ h1{
         }
     }
 }
-.theme-local-menu{
-    margin: 3em auto 2em;
-    width: 90%;
-    border: 1px solid $keycolor;
-    padding: 1em 1.5em;
-    border-radius: 0.5em;
+.theme-main-container{
+    display: flex;
+    flex-direction: row;
+
+    &__main{
+        width: 75%;
+        margin: 1em 12px;
+    }
+    &__local-menu{
+        width: 25%;
+        margin: 1em 12px;
+    }
+    &__local-menu-frame{
+        @include frame-border;
+        border: 1px solid $keycolor;
+        padding: 1em 1.5em;
+<?php
+    if( $json->keycolor_rate >= 8 ){
+        echo 'border-color: #fff;';
+    }else if( $json->keycolor_rate <= 0 ){
+        echo 'border: none;';
+        echo 'padding: 0;';
+    }
+?>
+    }
 }
 .theme-pagetop{
     display: flex;
@@ -149,6 +292,14 @@ h1{
     padding-top: 1em;
     font-size: 78%;
 
+<?php
+    if( $json->keycolor_rate >= 5 ){
+        echo 'color: #fff;';
+        echo 'border-color: #fff;';
+        echo 'background-color: $keycolor;';
+    }
+?>
+
     &__copyright{
     }
 }
@@ -162,12 +313,24 @@ h1{
         margin: 0;
         padding: 0;
         border-right: 1px solid $keycolor;
+<?php
+    if( $json->keycolor_rate >= 5 ){
+        echo 'color: #fff;';
+        echo 'border-color: #fff;';
+    }
+?>
         &:last-child{
             border-right: none;
         }
         a{
             display: block;
             padding: 0.2em 2em;
+<?php
+    if( $json->keycolor_rate >= 5 ){
+        echo 'color: #fff;';
+        echo 'border-color:#fff;';
+    }
+?>
         }
     }
 }

@@ -1,3 +1,6 @@
+<?php
+$json = include(__DIR__.'/theme_files/style_conf.php');
+?>
 <!doctype html>
 <html>
 <head>
@@ -23,7 +26,7 @@
 	print $px->bowl()->get_clean('head');
 ?>
 </head>
-<body class="theme-layout-rnavi">
+<body class="theme-layout-top">
 <a id="pagetop"></a>
 <div class="theme-root">
 <header class="theme-header">
@@ -48,33 +51,18 @@
 	</div>
 </header>
 <div class="container">
-	<div class="theme-main-container">
-		<div class="theme-main-container__main">
-			<div class="theme-breadcrumb"><?= $theme->mk_breadcrumb() ?></div>
-
-			<?php if( strlen($px->site()->get_current_page_info('id')) ){ ?><h1><?= preg_replace('/\r\n|\r|\n/s', '<br />', htmlspecialchars($px->site()->get_current_page_info('title_h1')) ); ?></h1><?php } ?>
-			<div class="contents" <?= htmlspecialchars( $theme->get_attr_bowl_name_by() )?>="main">
+<?php if( strlen($json->welcome_photo) ){ ?>
+	<div class="theme-welcome">
+		<img src="<?= $theme->files( $json->welcome_photo ); ?>" alt="" />
+	</div>
+<?php } ?>
+	<div class="contents" <?= htmlspecialchars( $theme->get_attr_bowl_name_by() )?>="main">
 <?php
 	//↓コンテンツから受け取った
 	//  コンテンツエリアのソースを出力しています。
 	print $px->bowl()->get_clean();
 ?>
-			</div>
-		</div>
-
-<?php
-$category_top_id = $px->site()->get_category_top();
-if( strlen($category_top_id) && count($px->site()->get_children($category_top_id)) ){ ?>
-		<div class="theme-main-container__local-menu">
-			<div class="theme-main-container__local-menu-frame">
-				<p><a href="<?= htmlspecialchars( $px->href($category_top_id) ) ?>"><?= htmlspecialchars($px->site()->get_page_info($category_top_id, 'title_label')) ?></a></p>
-<?= $theme->mk_sub_menu( $category_top_id ) ?>
-			</div>
-		</div>
-<?php } ?>
-
 	</div>
-
 
 	<div class="theme-pagetop">
 		<a href="#pagetop">page top</a>
